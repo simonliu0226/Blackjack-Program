@@ -8,6 +8,8 @@ print ('''
        
        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
        ''')
+
+# prints rules
 print ('''
        Rules:
        1. The dealer will deal the player two cards.
@@ -20,6 +22,8 @@ print ('''
        6. The winner is decided by who has the higher total amount or the person that did not bust.
        ''')
 
+# starts the game when player enters y
 start = None
 while(start != "y"):
     start = input("Please enter \"y\" to start the game: ")
+
