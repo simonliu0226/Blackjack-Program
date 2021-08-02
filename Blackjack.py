@@ -1,5 +1,8 @@
 # Blackjack game
 
+import random 
+
+
 # prints title
 print ('''
        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -22,8 +25,20 @@ print ('''
        6. The winner is decided by who has the higher total amount or the person that did not bust.
        ''')
 
+possible_cards = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"]
+
+# function that deals cards
+def deal_cards():
+       card_1 = possible_cards[random.randint(0, 12)]
+       card_2 = possible_cards[random.randint(0, 12)]
+       card_1_value = card_1
+       card_2_value = card_2
+       
+       
+
 # starts the game when player enters y
 start = None
 while(start != "y"):
-    start = input("Please enter \"y\" to start the game: ")
+       start = input("Please enter \"y\" to start the game: ")
 
+   
