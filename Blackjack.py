@@ -19,3 +19,7 @@ print ('''
        5. After the player's turn, the dealer will play their cards.
        6. The winner is decided by who has the higher total amount or the person that did not bust.
        ''')
+
+start = None
+while(start != "y"):
+    start = input("Please enter \"y\" to start the game: ")
