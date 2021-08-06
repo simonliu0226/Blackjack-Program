@@ -26,19 +26,27 @@ print ('''
        ''')
 
 possible_cards = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"]
-
+dealt_cards_player = []
+dealt_cards_dealer = []
 # function that deals cards
-def deal_cards():
-       card_1 = possible_cards[random.randint(0, 12)]
-       card_2 = possible_cards[random.randint(0, 12)]
-       card_1_value = card_1
-       card_2_value = card_2
+def deal_cards(cards):
+       for i in range(2):
+              cards.append(random.randint(0, 12))
        
-       
+def dealt_ace_11(card):
+       card = 11
+
+def dealt_ace_1(card):
+       card = 1
+              
+def count_total():
+       pass
 
 # starts the game when player enters y
 start = None
 while(start != "y"):
        start = input("Please enter \"y\" to start the game: ")
+       
+deal_cards(dealt_cards_player)
 
    
