@@ -25,7 +25,7 @@ print ('''
        6. The winner is decided by who has the higher total amount or the person that did not bust.
        ''')
 
-# lists all poss
+# lists all possible
 possible_cards = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"]
 
 
@@ -60,6 +60,7 @@ while(play_again != "q"):
        while(start != "y"):
               start = input("Please enter \"y\" to start the game: ")
        
+# deals two cards to the player
        for i in range(2):
               deal_card(dealt_cards_player)
               deal_card(dealt_cards_dealer)
