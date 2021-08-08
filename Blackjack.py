@@ -62,25 +62,52 @@ while(play_again != "q"):
        
        for i in range(2):
               deal_card(dealt_cards_player)
+              deal_card(dealt_cards_dealer)
        print("You have been dealt a {card_1} and a {card_2}.".format(card_1=dealt_cards_player[0], card_2=dealt_cards_player[1]))
        print("Your current total is: {total}".format(total=count_total(dealt_cards_player)))
        
 # checks to see if player wants to hit or stand
        while(True):
-              while(True):
-                     hit_or_stand = input("Would you like to hit or stand? Enter \"h\" or \"s\": ")
-                     if(hit_or_stand == "h") or (hit_or_stand == "s"):
+              if count_total(dealt_cards_player) < 21:
+                     while(True):
+                            hit_or_stand = input("Would you like to hit or stand? Enter \"h\" or \"s\": ")
+                            if(hit_or_stand == "h") or (hit_or_stand == "s"):
+                                   break
+                     if hit_or_stand == "h":
+                            deal_card(dealt_cards_player)
+                            print("You have recieved a {card}.".format(card=dealt_cards_player[-1]))
+                            print("Your new total is: {total}".format(total=count_total(dealt_cards_player)))
+                     elif hit_or_stand == "s":
                             break
-              if hit_or_stand == "h":
-                     deal_card(dealt_cards_player)
-                     print("You have recieved a {card}.".format(card=dealt_cards_player[-1]))
-                     print("Your new total is: {total}".format(total=count_total(dealt_cards_player)))
-              elif hit_or_stand == "s":
+              elif count_total(dealt_cards_player) > 21:
+                     print("You have bust. You lose.")
                      break
-       
-       
-       
-       
+              else:
+                     break
+
+# the dealer draws cards, winning if they score higher than the player
+       if count_total(dealt_cards_player) < 21:
+              word = ""
+              if count_total(dealt_cards_dealer) < 17:
+                     deal_card(dealt_cards_dealer)
+              elif (count_total(dealt_cards_dealer) == 17) and ("A" in dealt_cards_dealer):
+                     deal_card(dealt_cards_dealer)
+              for card in dealt_cards_dealer:
+                     word += " a " + str(card)
+              print("The dealer draws" + word + ".")
+              print("Their total is: {total}".format(total=count_total(dealt_cards_dealer)))
+              
+# prints whether player wins or loses              
+              if count_total(dealt_cards_dealer) <= 21:      
+                     if count_total(dealt_cards_player) > count_total(dealt_cards_dealer):
+                            print("You have won with a score of {total_player} compared to the dealer's total of {total_dealer}.".format(total_player=count_total(dealt_cards_player),total_dealer=count_total(dealt_cards_dealer)))
+                     elif count_total(dealt_cards_player) < count_total(dealt_cards_dealer):
+                            print("You have lost with a score of {total_player} compared to the dealer's total of {total_dealer}.".format(total_player=count_total(dealt_cards_player),total_dealer=count_total(dealt_cards_dealer)))
+                     else:
+                            print("You have tied with scores of {total}".format(total=count_total(dealt_cards_dealer)))
+              else:
+                     print("The dealer has bust. You win!")
+                     
 # checks if player wants to play again or quit
        while(True):
               play_again = input("Enter \"y\" to play again or enter \"q\" to quit: ")
