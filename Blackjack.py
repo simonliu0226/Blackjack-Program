@@ -25,28 +25,49 @@ print ('''
        6. The winner is decided by who has the higher total amount or the person that did not bust.
        ''')
 
+# lists all poss
 possible_cards = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"]
-dealt_cards_player = []
-dealt_cards_dealer = []
+
+
 # function that deals cards
 def deal_cards(cards):
        for i in range(2):
-              cards.append(random.randint(0, 12))
+              cards.append(possible_cards[random.randint(0, 12)])
        
-def dealt_ace_11(card):
-       card = 11
+       
+# counts total value of the cards
+def count_total(cards):
+       total = 0
+       for card in cards:
+              if card == "A":
+                     total += 11
+                     if total > 21:
+                            total -= 10
+              elif (card == "J" or card == "Q" or card == "K"):
+                     total += 10
+              else:
+                     total += card
+       return total
 
-def dealt_ace_1(card):
-       card = 1
-              
-def count_total():
-       pass
-
+# continues the game until the player decides to quit
+play_again = None
+while(play_again != "q"):
+       dealt_cards_player = []
+       dealt_cards_dealer = []
+       
 # starts the game when player enters y
-start = None
-while(start != "y"):
-       start = input("Please enter \"y\" to start the game: ")
+       start = None
+       while(start != "y"):
+              start = input("Please enter \"y\" to start the game: ")
        
-deal_cards(dealt_cards_player)
+       deal_cards(dealt_cards_player)
+       print(dealt_cards_player)
+       print(count_total(dealt_cards_player))
+       
+# checks if player wants to play again or quit
+       while(True):
+              play_again = input("Enter \"y\" to play again or enter \"q\" to quit: ")
+              if (play_again == "y") or (play_again == "q"):
+                     break
 
    
