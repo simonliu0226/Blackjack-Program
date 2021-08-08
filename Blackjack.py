@@ -89,10 +89,12 @@ while(play_again != "q"):
 # the dealer draws cards, winning if they score higher than the player
        if count_total(dealt_cards_player) < 21:
               word = ""
-              if count_total(dealt_cards_dealer) < 17:
+              while count_total(dealt_cards_dealer) < 17:
                      deal_card(dealt_cards_dealer)
-              elif (count_total(dealt_cards_dealer) == 17) and ("A" in dealt_cards_dealer):
+              if (count_total(dealt_cards_dealer) == 17) and ("A" in dealt_cards_dealer):
                      deal_card(dealt_cards_dealer)
+              
+# prints what the dealer drew and what their total is
               for card in dealt_cards_dealer:
                      word += " a " + str(card)
               print("The dealer draws" + word + ".")
