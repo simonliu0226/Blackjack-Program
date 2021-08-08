@@ -30,9 +30,8 @@ possible_cards = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"]
 
 
 # function that deals cards
-def deal_cards(cards):
-       for i in range(2):
-              cards.append(possible_cards[random.randint(0, 12)])
+def deal_card(cards):
+       cards.append(possible_cards[random.randint(0, 12)])
        
        
 # counts total value of the cards
@@ -54,15 +53,33 @@ play_again = None
 while(play_again != "q"):
        dealt_cards_player = []
        dealt_cards_dealer = []
+       hit_or_stand = None
        
 # starts the game when player enters y
        start = None
        while(start != "y"):
               start = input("Please enter \"y\" to start the game: ")
        
-       deal_cards(dealt_cards_player)
-       print(dealt_cards_player)
-       print(count_total(dealt_cards_player))
+       for i in range(2):
+              deal_card(dealt_cards_player)
+       print("You have been dealt a {card_1} and a {card_2}.".format(card_1=dealt_cards_player[0], card_2=dealt_cards_player[1]))
+       print("Your current total is: {total}".format(total=count_total(dealt_cards_player)))
+       
+# checks to see if player wants to hit or stand
+       while(True):
+              while(True):
+                     hit_or_stand = input("Would you like to hit or stand? Enter \"h\" or \"s\": ")
+                     if(hit_or_stand == "h") or (hit_or_stand == "s"):
+                            break
+              if hit_or_stand == "h":
+                     deal_card(dealt_cards_player)
+                     print("You have recieved a {card}.".format(card=dealt_cards_player[-1]))
+                     print("Your new total is: {total}".format(total=count_total(dealt_cards_player)))
+              elif hit_or_stand == "s":
+                     break
+       
+       
+       
        
 # checks if player wants to play again or quit
        while(True):
