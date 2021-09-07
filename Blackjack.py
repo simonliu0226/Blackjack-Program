@@ -112,6 +112,8 @@ while(play_again != "q"):
                      print("The dealer has bust. You win!")
                      
 # checks if player wants to play again or quit
+       if count_total(dealt_cards_player) == 21 and (count_total(dealt_cards_player) > count_total(dealt_cards_dealer)):
+              print("Blackjack! You Win!!!")
        while(True):
               play_again = input("Enter \"y\" to play again or enter \"q\" to quit: ")
               if (play_again == "y") or (play_again == "q"):
